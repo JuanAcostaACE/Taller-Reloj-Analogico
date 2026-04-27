@@ -24,7 +24,6 @@ CROWN_STEP_DEGREES = 6
 
 
 def polar_to_xy(angle_deg: float, radius: float, cx: float = CENTER, cy: float = CENTER):
-    """Convert polar coords (angle from 12 o'clock, CW) to canvas xy."""
     angle_rad = math.radians(angle_deg - 90)
     x = cx + radius * math.cos(angle_rad)
     y = cy + radius * math.sin(angle_rad)
@@ -45,11 +44,6 @@ def hand_polygon(angle_deg: float, length: float, width: float,
 
 
 class ClockState:
-    """
-    Manages time state.
-    When adjusting, system-clock sync is paused and an offset is applied.
-    """
-
     def __init__(self):
         self._offset_seconds: int = 0
         self.adjusting: bool = False
@@ -73,8 +67,6 @@ class ClockState:
         self._offset_seconds += delta * 3600
 
 class AnalogClockApp:
-    """Main application class."""
-
     def __init__(self, root: tk.Tk):
         self.root = root
         self.root.title("Reloj Analógico")
@@ -87,7 +79,6 @@ class AnalogClockApp:
         self._tick()
 
     def _build_ui(self):
-
         title_font = tkfont.Font(family="Helvetica", size=13, weight="bold")
         tk.Label(
             self.root, text="Reloj Analógico", font=title_font,
@@ -161,8 +152,6 @@ class AnalogClockApp:
             command=lambda: self._crown_adjust("minute", +1)
         )
         self.btn_min_fwd.pack(side="left", padx=2)
-
-        # Reset button
         tk.Button(
             frame, text="↺", bg="#888", fg="white", relief="flat", bd=0,
             font=tkfont.Font(family="Helvetica", size=11, weight="bold"),
