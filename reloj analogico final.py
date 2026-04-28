@@ -87,13 +87,13 @@ class AnalogClockApp:
 
         readout_font = tkfont.Font(family="Courier", size=18, weight="bold")
         self.time_label = tk.Label(
-            self.root, text="", font=readout_font,
+            self.root, font=readout_font,
             bg=BG_COLOR, fg="#2C2C3E"
         )
         self.time_label.pack(pady=(4, 2))
 
         self.status_label = tk.Label(
-            self.root, text="", font=tkfont.Font(family="Helvetica", size=10),
+            self.root, font=tkfont.Font(family="Helvetica", size=10),
             bg=BG_COLOR, fg="#888"
         )
         self.status_label.pack()
@@ -159,7 +159,7 @@ class AnalogClockApp:
             self.state.adjust_hours(delta)
         else:
             self.state.adjust_minutes(delta)
-        self.root.after(600, self._resume_clock)
+        self.root.after(50, self._resume_clock)
         self._update_display()
 
     def _resume_clock(self):
