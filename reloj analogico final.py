@@ -32,10 +32,6 @@ def polar_to_xy(angle_deg: float, radius: float, cx: float = CENTER, cy: float =
 
 def hand_polygon(angle_deg: float, length: float, width: float,
                  tail: float = 0.0, cx: float = CENTER, cy: float = CENTER):
-    """
-    Return a 4-point polygon for a clock hand.
-    The hand points in angle_deg from 12 o'clock (clockwise).
-    """
     tip_x,  tip_y  = polar_to_xy(angle_deg,          length, cx, cy)
     tail_x, tail_y = polar_to_xy(angle_deg + 180,     tail,   cx, cy)
     left_x, left_y = polar_to_xy(angle_deg + 90,      width,  cx, cy)
@@ -179,7 +175,6 @@ class AnalogClockApp:
         self._update_display()
 
     def _draw_static_face(self):
-        """Draw all elements that never change (face, ticks, numbers)."""
         c = self.canvas
         cx, cy = CENTER, CENTER
         r = CLOCK_RADIUS
