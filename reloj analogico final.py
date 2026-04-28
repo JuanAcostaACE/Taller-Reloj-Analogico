@@ -136,13 +136,13 @@ class AnalogClockApp:
 
         self.btn_min_back = tk.Button(
             frame, text="−", **btn_style,
-            command=lambda: self._crown_adjust("minute", -1)
+            command=lambda: self._crown_adjust("minute", -5)
         )
         self.btn_min_back.pack(side="left", padx=2)
 
         self.btn_min_fwd = tk.Button(
             frame, text="+", **btn_style,
-            command=lambda: self._crown_adjust("minute", +1)
+            command=lambda: self._crown_adjust("minute", +5)
         )
         self.btn_min_fwd.pack(side="left", padx=2)
         tk.Button(
