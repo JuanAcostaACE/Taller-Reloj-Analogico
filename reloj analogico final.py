@@ -58,7 +58,6 @@ class ClockState:
         self._offset_seconds += delta * 60
 
     def adjust_hours(self, delta: int):
-        """Shift the displayed time by delta hours."""
         self._offset_seconds += delta * 3600
 
 class AnalogClockApp:
@@ -100,7 +99,6 @@ class AnalogClockApp:
         self.status_label.pack()
 
         self._build_crown_controls()
-
 
     def _build_crown_controls(self):
         frame = tk.Frame(self.root, bg=BG_COLOR)
@@ -156,7 +154,6 @@ class AnalogClockApp:
         ).pack(side="left", padx=(12, 0))
 
     def _crown_adjust(self, unit: str, delta: int):
-        """Called when a crown button is pressed."""
         self.state.start_adjusting()
         if unit == "hour":
             self.state.adjust_hours(delta)
