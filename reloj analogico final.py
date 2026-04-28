@@ -55,7 +55,6 @@ class ClockState:
         self.adjusting = False
 
     def adjust_minutes(self, delta: int):
-        """Shift the displayed time by delta minutes."""
         self._offset_seconds += delta * 60
 
     def adjust_hours(self, delta: int):
@@ -222,7 +221,6 @@ class AnalogClockApp:
 
 
     def _update_display(self):
-        """Redraw the moving hands and update labels."""
         now = self.state.current_time()
         h, m, s = now.hour % 12, now.minute, now.second
         ms = now.microsecond / 1_000_000   
@@ -279,7 +277,6 @@ class AnalogClockApp:
                 )
 
     def _tick(self):
-        """Main loop — update display every ~50 ms for smooth movement."""
         if not self.state.adjusting:
             self._update_display()
         self.root.after(50, self._tick)
